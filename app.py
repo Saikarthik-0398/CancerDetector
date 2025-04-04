@@ -319,7 +319,7 @@ def club_result():
     )
 
 
-app.run(port=7334,debug=True)            
+app.run(port=5000,debug=True)            
             
             
             
