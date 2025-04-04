@@ -317,11 +317,8 @@ def club_result():
         level = Level,
         negative = negative
     )
-
-
-app.run(port=5000,debug=True)            
-            
-            
+port = int(os.environ.get("PORT", 5000))  # Use PORT env var if set by Render
+app.run(host='0.0.0.0', port=port)            
             
             
         
