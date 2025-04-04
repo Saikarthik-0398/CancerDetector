@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 Cancer Risk Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #281549;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            overflow-y: auto;
+        }
+
+        /* Full-width banner with rounded bottom */
+        .top-banner {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to right, #6A11CB, #FF00FF);
+            border-bottom-left-radius: 50% 20px;
+            border-bottom-right-radius: 50% 20px;
+        }
+
+        .container {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 45px 50px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 650px;
+            box-sizing: border-box;
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 35px;
+            font-weight: 700;
+            font-size: 2.7em;
+            color: #fff;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 6px rgba(0,0,0,0.5);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .form-group label {
+            margin-bottom: 7px;
+            font-size: 1.15em;
+            color: #e3e3e3;
+        }
+
+        .form-group input, .form-group select {
+            padding: 14px 15px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1em;
+            color: #333;
+            box-sizing: border-box;
+            transition: box-shadow 0.4s, transform 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            box-shadow: 0 0 15px #fff;
+            transform: scale(1.04);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            margin-top: 30px;
+            background: linear-gradient(to right, #6A11CB, #FF00FF);
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.5em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.5s, transform 0.4s;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #96c93d, #00b09b);
+            transform: translateY(-6px);
+        }
+
+        .footer {
+            margin-top: 35px;
+            text-align: center;
+            font-size: 0.85em;
+            color: #ddd;
+            opacity: 0.75;
+        }
+
+        @media(max-width: 500px){
+            .container {
+                padding: 35px 30px;
+            }
+
+            .container h2 {
+                font-size: 2.2em;
+            }
+
+            .submit-btn {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner"></div>
+    <div class="container">
+        <h2>Level 2 Cancer Prediction</h2>
+        <form action="/level2" method="POST">
+            <div class="form-group">
+                <label for="history_disease">History of Chronic Diseases:</label>
+                <select id="history_disease" name="history_disease" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="1">Low</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Severe</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="past_cancer">Past Cancer Diagnosis:</label>
+                <select id="past_cancer" name="past_cancer" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="1">More than 5 times</option>
+                    <option value="2">Less than 5 times</option>
+                    <option value="3">Never</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="family_history">Family History of Other Cancers:</label>
+                <select id="family_history" name="family_history" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="1">Never</option>
+                    <option value="2">Basic cancer</option>
+                    <option value="3">Chronic cancer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="cough_duration">Persistent Cough Duration (weeks):</label>
+                <input type="number" id="cough_duration" name="cough_duration" min="0" max="52" required placeholder="Enter duration in weeks">
+            </div>
+
+            <div class="form-group">
+                <label for="bleeding">Unusual Bleeding:</label>
+                <select id="bleeding" name="bleeding" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="1">Never</option>
+                    <option value="2">Sometimes</option>
+                    <option value="3">Severely</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="lymph_nodes">Swollen Lymph Nodes Duration (weeks):</label>
+                <input type="number" id="lymph_nodes" name="lymph_nodes" min="0" max="52" required placeholder="Enter duration in weeks">
+            </div>
+
+            <div class="form-group">
+                <label for="infections">Recurring Infections (past year):</label>
+                <input type="number" id="infections" name="infections" min="0" max="20" required placeholder="Enter count">
+            </div>
+
+            <div class="form-group">
+                <label for="radiation">Radiation Exposure:</label>
+                <select id="radiation" name="radiation" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="1">Rarely</option>
+                    <option value="2">Sometimes</option>
+                    <option value="3">Severely</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="hazard_exposure">Occupational Hazard Exposure:</label>
+                <select id="hazard_exposure" name="hazard_exposure" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="1">Rarely</option>
+                    <option value="2">Sometimes</option>
+                    <option value="3">Severely</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inflammation">Chronic Inflammation History:</label>
+                <select id="inflammation" name="inflammation" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="1">High</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Low</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="immunity">Immunity Level:</label>
+                <select id="immunity" name="immunity" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="1">Strong</option>
+                    <option value="2">Moderate</option>
+                    <option value="3">Weak</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">Predict Cancer Risk</button>
+
+            <div class="footer">
+                &copy; 2025 Cancer Risk Prediction System. Early Detection Saves Lives.
+            </div>
+        </form>
+    </div>
+</body>
+</html>
